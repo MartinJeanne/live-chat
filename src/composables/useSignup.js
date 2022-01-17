@@ -16,7 +16,6 @@ async function signup(email, password, displayName) {
         return response
         
     } catch (err) {
-        console.log(err.message)
         error.value = err.message
     }
 }
