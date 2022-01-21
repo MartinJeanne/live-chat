@@ -5,7 +5,7 @@ function getCollection(collection) {
     const documents = ref(null)
     const error = ref(null)
 
-    let collectionRef = projectFirestore.collection(collection).orderBy('creadetAt')
+    let collectionRef = projectFirestore.collection(collection).orderBy('createdAt')
 
     // snapshot est déclenché à chaque fois qu'il y a un changement dans une collection
     collectionRef.onSnapshot((snap) => {
