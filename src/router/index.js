@@ -10,11 +10,19 @@ function requireAuth(to, from, next) {
   else next({ name: 'Welcome' })
 }
 
+// welcome guard
+function requireNoAuth(to, from, next) {
+  let user = projectAuth.currentUser
+  if (!user) next()
+  else next({ name: 'Chatroom' })
+}
+
 const routes = [
   {
     path: '/',
     name: 'Welcome',
-    component: Welcome
+    component: Welcome,
+    beforeEnter: requireNoAuth
   },
   {
     path: '/chatroom',
