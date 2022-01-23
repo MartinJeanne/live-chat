@@ -16,7 +16,8 @@ async function signup(email, password, displayName) {
         return response
         
     } catch (err) {
-        error.value = err.message
+        console.log(err.message)
+        error.value = 'Sorry, an error has occured'
     }
 }
 
