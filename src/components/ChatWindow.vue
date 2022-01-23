@@ -66,5 +66,19 @@ export default {
   height: 400px;
   max-height: 400px;
   overflow: auto;
+  padding-right: 2px;
+  padding-right: 8px;
+}
+
+.messages::-webkit-scrollbar {
+    width: 8px;
+}
+
+.messages::-webkit-scrollbar-thumb {
+    background-color: rgb(171, 171, 171);
+}
+
+.messages::-webkit-scrollbar-track {
+    background-color: #646464;
 }
 </style>
