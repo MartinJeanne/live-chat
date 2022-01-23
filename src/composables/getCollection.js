@@ -1,4 +1,4 @@
-import { ref } from "vue"
+import { ref, watchEffect } from "vue"
 import { projectFirestore, timestamp } from '../firebase/config'
 
 function getCollection(collection) {
@@ -8,7 +8,7 @@ function getCollection(collection) {
     let collectionRef = projectFirestore.collection(collection).orderBy('createdAt')
 
     // snapshot est déclenché à chaque fois qu'il y a un changement dans une collection
-    collectionRef.onSnapshot((snap) => {
+    const unsub = collectionRef.onSnapshot((snap) => {
         let results = []
         snap.docs.forEach(doc => {
             doc.data().createdAt && results.push({ ...doc.data(), id: doc.id })
@@ -20,6 +20,11 @@ function getCollection(collection) {
         documents.value = null
         error.value = 'Could not fetch data'
     })
+
+    watchEffect((onInvalidate) => {
+      onInvalidate(() => unsub())
+    })
+
     return { documents, error }
 }
 
