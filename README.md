@@ -1,6 +1,6 @@
 # live-chat
-Just a simple live chat website created with Vue.js and Firebase !
-Check it out: https://l1nkstart.web.app/chatroom
+- Just a simple live chat website created with Vue.js and Firebase !
+- Check it out: https://l1nkstart.web.app/
 
 
 
